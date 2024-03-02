@@ -1,12 +1,12 @@
 import './App.css';
-import { useState } from 'react';
+import React, { useState } from 'react';
 
 interface SquareProps {
   value: string | null;
   onSquareClick: () => void;
 }
 
-const Square = ({ value, onSquareClick } : SquareProps) => {
+const Square: React.FC<SquareProps> = ({ value, onSquareClick }) => {
   return (
     <button className="square" onClick={onSquareClick}>
       {value}
@@ -20,7 +20,7 @@ interface BoardProps {
   onPlay: (nextSquares: (string | null)[]) => void;
 }
 
-const Board = ({ xIsNext, squares, onPlay } : BoardProps) => {
+const Board: React.FC<BoardProps> = ({ xIsNext, squares, onPlay }) => {
   function handleClick(i: number) {
     if (calculateWinner(squares) || squares[i]) {
       return;
@@ -60,7 +60,7 @@ const Board = ({ xIsNext, squares, onPlay } : BoardProps) => {
   );
 };
 
-const Game= () => {
+const Game: React.FC = () => {
   const [history, setHistory] = useState<(string | null)[][]>([Array(9).fill(null)]);
   const [currentMove, setCurrentMove] = useState<number>(0);
   const xIsNext: boolean = currentMove % 2 === 0;
