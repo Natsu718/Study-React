@@ -10,32 +10,17 @@ const CatFactsComponent: React.FC = () => {
   }, []);
 
   const fetchCatFact = async () => {
-    try {
       const response = await fetch('https://catfact.ninja/fact');
-      if (!response.ok) {
-        throw new Error('Failed to fetch cat fact');
-      }
       const data = await response.json();
       setCatFact(data.fact);
-    } catch (error) {
-      console.error('Error fetching cat fact:', error);
-    }
-    
   };
   
 
   const fetchCatImage = async () => {
-    try {
-      const response = await fetch('https://cataas.com/cat/says/hello');
-      if (!response.ok) {
-        throw new Error('Failed to fetch cat image');
-      }
-      const blob = await response.blob();
-      const imageUrl = URL.createObjectURL(blob);
-      setCatImage(imageUrl);
-    } catch (error) {
-      console.error('Error fetching cat image:', error);
-    }
+    const response = await fetch('https://cataas.com/cat/says/hello');
+    const blob = await response.blob();
+    const imageUrl = URL.createObjectURL(blob);
+    setCatImage(imageUrl);
   };
 
   const getFirstLetter = (fact: string): string => {
@@ -48,23 +33,31 @@ const CatFactsComponent: React.FC = () => {
     await fetchCatImage();
   };
 
-  return (
-    <div>
-      <h2>Random Cat Fact</h2>
-      <button onClick={handleButtonClick}>Fetch Fact</button>
-      {catFact ? (
-        <p>{getFirstLetter(catFact)}</p>
-      ) : (
-        <p>Loading cat fact...</p>
-      )
-      }
-      {catImage ? (
-        <img src={catImage} alt="Cat saying hello" />
-      ) : (
-        <p>Loading cat image...</p>
-      )}
-    </div>
-  );
+  if (catFact ==="" && catImage ==="" ){
+    
+    return (
+      <div>
+        <button onClick={handleButtonClick}>Fetch Fact</button>
+        <p>Loading cat fact...<br />Loading cat image...</p>
+      </div>
+    );
+  } {
+    return (
+      <div>
+        <h2>Random Cat Fact</h2>
+        <button onClick={handleButtonClick}>Fetch Fact</button>
+          {
+          <div>
+          <p>{getFirstLetter(catFact)}</p>
+          <img src={catImage} alt="Cat saying hello" />
+          </div>
+        }
+      </div>
+    );
+  }
+
+
+  
 };
 
 export default CatFactsComponent;
