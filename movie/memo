@@ -1,0 +1,8 @@
+<div>
+    <h1>Movies Search Engine</h1>
+</div>
+<div className="form">
+    <input placeholder='Avengers, Star Wars, The'></input>
+    <input type="checkbox" id="checkbox" name="checkbox"></input>
+    <button onClick={handleSearch}>Search</button>
+</div>
