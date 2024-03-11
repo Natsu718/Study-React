@@ -1,6 +1,7 @@
 import { useState, useEffect, FC } from "react";
 import "../App.css";
 import Movie from "./Movie";
+import Checkbox from "./Checkbox";
 import Search from "./Search";
 
 interface MovieItem {
@@ -42,10 +43,12 @@ const App: FC = () => {
       });
   };
 
+
   return (
     <div className="App">
+      <h1>Movie Search Engin</h1>
       <Search search={search} />
-      <p className="App-intro">Sharing a few of our favorite movies</p>
+      <Checkbox />
       <div className="movies">
         {loading && !errorMessage ? (
           <span>loading...</span>

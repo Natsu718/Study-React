@@ -80,8 +80,8 @@
 
 input[type="submit"] {
   padding: 5px;
-  background-color: transparent;
-  color: black;
+  background-color: #2f58ae;
+  color: rgb(0, 0, 0);
   border: 1px solid black;
   width: 80px;
   margin-left: 5px;
@@ -90,13 +90,13 @@ input[type="submit"] {
 
 
 input[type="submit"]:hover {
-  background-color: #282c34;
+  background-color: #4b618f;
   color: antiquewhite;
 }
 
 
 .search > input[type="text"]{
-  width: 40%;
+  width: 30%;
   min-width: 170px;
 }
 
