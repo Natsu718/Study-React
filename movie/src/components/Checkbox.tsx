@@ -4,6 +4,8 @@ import React, { useState } from 'react';
 const Checkbox:React.FC = () => {
     const [isChecked, setIsChecked] = useState(true);
 
+    
+
     return (
         <div>
         <label htmlFor="check">

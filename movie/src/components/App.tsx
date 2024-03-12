@@ -4,6 +4,7 @@ import Movie from "./Movie";
 import Checkbox from "./Checkbox";
 import Search from "./Search";
 
+
 interface MovieItem {
   Title: string;
   Poster: string;
