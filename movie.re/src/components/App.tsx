@@ -1,8 +1,8 @@
 import { useState, useEffect, FC } from "react";
 import "../App.css";
 import Movie from "./Movie";
-import Checkbox from "./Checkbox";
 import Search from "./Search";
+import Sort from "./Sort";
 
 
 interface MovieItem {
@@ -11,12 +11,14 @@ interface MovieItem {
   Year: string;
 }
 
+
 const MOVIE_API_URL = "https://www.omdbapi.com/?s=man&apikey=c179b0a5";
 
 const App: FC = () => {
   const [loading, setLoading] = useState<boolean>(true);
   const [movies, setMovies] = useState<MovieItem[]>([]);
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
+  const [sort, setSort] = useState<boolean>(false);
 
   useEffect(() => {
     fetch(MOVIE_API_URL)
@@ -44,12 +46,18 @@ const App: FC = () => {
       });
   };
 
+  const handleSort = () => {
+      setSort(!sort);
+    };
+  
+
 
   return (
     <div className="App">
-      <h1>Movie Search Engin</h1>
-      <Search search={search} />
-      <Checkbox />
+      <h1>Movie Search Engine</h1>
+      <Search search={ search } />
+      <input type='checkbox' onChange={handleSort} checked={sort} />
+      <Sort movies={movies} sort={sort} />
       <div className="movies">
         {loading && !errorMessage ? (
           <span>loading...</span>
@@ -64,5 +72,6 @@ const App: FC = () => {
     </div>
   );
 };
+
 
 export default App;

@@ -37,13 +37,20 @@ const Search: React.FC<SearchProps> = (props) => {
   };
 
   return (
-    <form className="search">
+    <>
+      <form className='search'>
       <input
-        value={searchValue}
-        onChange={onInputValueChanged}
+        style={{
+          border: '1px solid transparent',
+        }} 
+        onChange={onInputValueChanged} 
+        value={searchValue} 
+        name='query' 
+        placeholder='Avengers, Star Wars, The Matrix...'
         type="text"
       />
     </form>
+  </>
   );
 };
 
