@@ -14,8 +14,6 @@ const DEFAULT_PLACEHOLDER_IMAGE =
 const Movie: React.FC<MovieProps> = ({ movie }) => {
   const poster =
     movie.Poster === "N/A" ? DEFAULT_PLACEHOLDER_IMAGE : movie.Poster;
-
-    
   return (
     <div className="movie">
       <h2>{movie.Title}</h2>
