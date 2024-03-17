@@ -1,5 +1,6 @@
 import { useState, useEffect, FC } from "react";
 import "../App.css";
+import Movie from "./Movie";
 import Search from "./Search";
 import Sort from "./Sort";
 
@@ -47,7 +48,6 @@ const App: FC = () => {
 
   const handleSort = () => {
       setSort(!sort);
-      
     };
   
 
@@ -57,13 +57,16 @@ const App: FC = () => {
       <h1>Movie Search Engine</h1>
       <Search search={ search } />
       <input type='checkbox' onChange={handleSort} checked={sort} />
+      <Sort movies={movies} sort={sort} />
       <div className="movies">
         {loading && !errorMessage ? (
           <span>loading...</span>
         ) : errorMessage ? (
           <div className="errorMessage">{errorMessage}</div>
         ) : (
-          <Sort movies={movies} sort={sort} />
+          movies.map((movie, index) => (
+            <Movie key={`${index}-${movie.Title}`} movie={movie} />
+          ))
         )}
       </div>
     </div>

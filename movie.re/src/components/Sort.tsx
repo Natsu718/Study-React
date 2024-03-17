@@ -1,5 +1,4 @@
 import React, { useMemo } from 'react';
-import Movie from './Movie';
 
 interface SortProps {
   movies: MovieItem[];
@@ -22,11 +21,13 @@ const Sort: React.FC<SortProps> = ({ movies, sort }) => {
 
   return (
     <div className="sorted-movies">
-      <div className="movies">
-        {sortedMovies.map((movie, index) => (
-          <Movie key={index} movie={movie} />
-        ))}
-      </div>
+      {sortedMovies.map((movie, index) => (
+        <div key={index}>
+          <p>{movie.Title}</p>
+          <img src={movie.Poster} alt={movie.Title} />
+          <p>{movie.Year}</p>
+        </div>
+      ))}
     </div>
   );
 }
