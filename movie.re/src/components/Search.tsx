@@ -1,4 +1,5 @@
 import React, { useState, ChangeEvent, useEffect } from "react";
+import { useDebounce } from "./Debounce";
 
 interface SearchProps {
   search: (value: string) => void;
@@ -6,26 +7,11 @@ interface SearchProps {
 
 const Search: React.FC<SearchProps> = (props) => {
   const [searchValue, setSearchValue] = useState<string>("");
-  
-  // debounce 関数を定義
-  const useDebounce = (value: string, delay: number) => {
-    const [debouncedValue, setDebouncedValue] = useState(value);
 
-    useEffect(() => {
-      const handler = setTimeout(() => {
-        setDebouncedValue(value);
-      }, delay);
-
-      return () => {
-        clearTimeout(handler);
-      };
-    }, [value, delay]);
-
-    return debouncedValue;
-  };
+  const debouncedValue = useDebounce(searchValue, 500);
 
   // デバウンスされた検索値を取得
-  const debouncedSearchValue = useDebounce(searchValue, 100);
+  const debouncedSearchValue = useDebounce(debouncedValue, 100);
 
   // デバウンスされた検索値が変更されたときに検索を実行
   useEffect(() => {

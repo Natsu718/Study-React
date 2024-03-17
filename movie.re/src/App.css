@@ -100,7 +100,7 @@ input[type="submit"]:hover {
   min-width: 170px;
 }
 
-@media screen and (min-width: 694px) and (max-width: 915px) {
+@media screen and (min-width: 694px) and (max-width: 2000px) {
   .movie {
     max-width: 33%;
   }
