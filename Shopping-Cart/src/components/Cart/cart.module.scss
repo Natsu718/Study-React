@@ -8,14 +8,14 @@
   
       .product {
         display: flex;
-        border-top: 1px dotted;
-        border-left: 1px dotted;
-        border-right: 1px dotted;
+        border-top: 1px ;
+        border-left: 1px ;
+        border-right: 1px ;
         padding: .3rem .5rem;
         align-items: center;
   
         h3 {
-          color: #007185;
+          color: #ffffff;
           font-weight: 700;
           font-size: 1em;
           line-height: 20px;
@@ -24,7 +24,7 @@
         }
   
         img {
-          max-width: 3rem;
+          max-width: 7rem;
           height: auto;
           margin: .875rem;
         }

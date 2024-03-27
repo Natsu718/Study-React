@@ -1,4 +1,4 @@
-import { FunctionComponent } from 'react'
+import React from 'react'
 
 import classes from './currency-formatter.module.scss'
 
@@ -7,7 +7,7 @@ interface Props {
   amount: number
 }
 
-export const CurrencyFormatter: FunctionComponent<Props> = ({ amount }) => {
+export const CurrencyFormatter:React.FC<Props> = ({ amount }) => {
   const formattedAmount = amount.toLocaleString('en-GB', {
     style: 'currency',
     currency: 'GBP'
